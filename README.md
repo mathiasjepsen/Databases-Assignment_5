@@ -20,3 +20,12 @@ BEGIN
     CALL denormalizeComments(NEW.PostId);
 END
 ```
+---
+## Exercise 3
+```sql
+CREATE DEFINER=`root`@`localhost` PROCEDURE `addNewComment`(IN p_Id INT, IN p_PostId INT, IN p_Score INT, IN p_Text TEXT, IN p_CreationDate DATETIME, IN p_UserID INT)
+BEGIN
+    INSERT INTO comments VALUES (p_Id, p_PostId, p_Score, p_Text, p_CreationDate, p_UserId);
+    CALL denormalizeComments(p_PostId);
+END
+```
